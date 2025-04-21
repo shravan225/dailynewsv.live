@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3600"> <!-- Auto-refresh every hour -->
     <title>Free Student Newspapers</title>
     <style>
         /* Main styling */
@@ -95,6 +96,24 @@
         .view-btn:hover {
             background-color: #2980b9;
         }
+
+        /* Ad container */
+        .ad-container {
+            margin: 30px auto;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        /* Donation section */
+        .donate-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
         
         /* Responsive design */
         @media (max-width: 768px) {
@@ -121,6 +140,8 @@
             color: #666;
         }
     </style>
+    <!-- Google AdSense (remove comment when approved) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID"></script> -->
 </head>
 <body>
     <header>
@@ -129,7 +150,14 @@
     </header>
     
     <div class="date-display" id="current-date">
-        <!-- Date will be inserted by JavaScript -->
+        <!-- Date auto-inserted by JavaScript -->
+    </div>
+
+    <!-- Ad Space (visible when you enable AdSense) -->
+    <div class="ad-container">
+        <p>Advertisement</p>
+        <!-- AdSense will auto-fill this -->
+        <div id="ad-slot-1"></div>
     </div>
     
     <div class="newspaper-section">
@@ -139,6 +167,8 @@
                 <h3 class="newspaper-name">The Hindu</h3>
                 <p>India's national daily with in-depth coverage of news and events.</p>
                 <a href="https://epaper.thehindu.com" class="view-btn" target="_blank">Read E-Paper</a>
+                <!-- Alternative iframe option (uncomment if needed) -->
+                <!-- <iframe src="https://epaper.thehindu.com" width="100%" height="500px" style="border:none; margin-top:10px;"></iframe> -->
             </div>
             
             <div class="newspaper-card">
@@ -159,6 +189,14 @@
                 <a href="https://epaper.indianexpress.com" class="view-btn" target="_blank">Read E-Paper</a>
             </div>
         </div>
+    </div>
+
+    <!-- Donation Section -->
+    <div class="donate-section">
+        <p>Support this free service for students:</p>
+        <a href="https://paypal.me/YOUR_USERNAME" target="_blank">
+            <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate via PayPal">
+        </a>
     </div>
     
     <div class="newspaper-section">
@@ -200,24 +238,27 @@
     </div>
     
     <footer>
-        <p>© 2023 Free Student Newspapers | Made for educational purposes</p>
+        <p>© <span id="current-year"></span> Free Student Newspapers | Made for educational purposes</p>
     </footer>
     
     <script>
-        // Display current date
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        // Auto-update date and year
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const today = new Date();
-        document.getElementById('current-date').textContent = today.toLocaleDateString('en-IN', options);
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Display current date
+        document.getElementById('current-date').textContent = today.toLocaleDateString('en-IN', dateOptions);
+        
+        // Display current year in footer
+        document.getElementById('current-year').textContent = today.getFullYear();
+
+        // Auto-refresh content every 1 hour (3600000 ms)
+        setTimeout(() => {
+            window.location.reload();
+        }, 3600000);
+
+        // AdSense auto-load (uncomment when approved)
+        // (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 </body>
 </html>
