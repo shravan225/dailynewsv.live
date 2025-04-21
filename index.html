@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="3600"> <!-- Auto-refresh every hour -->
     <title>Free Student Newspapers</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg" type="image/jpg">
     <style>
         /* Main styling */
         body {
@@ -18,28 +19,32 @@
         }
         
         .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
             text-align: center;
             padding: 20px 0;
             background-color: #2c3e50;
             color: white;
             border-radius: 5px;
             margin-bottom: 30px;
+            position: relative;
         }
         
-        .logo {
-            height: 80px;
+        .logo-tab {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 40px;
             width: auto;
             border-radius: 5px;
         }
         
-        .header-text {
-            flex: 1;
-            min-width: 300px;
+        @media (max-width: 768px) {
+            .logo-tab {
+                position: static;
+                transform: none;
+                display: block;
+                margin: 0 auto 10px;
+            }
         }
         
         h1 {
@@ -139,12 +144,6 @@
             .newspaper-grid {
                 grid-template-columns: 1fr;
             }
-            .header-container {
-                flex-direction: column;
-            }
-            .logo {
-                height: 60px;
-            }
         }
         
         /* Footer */
@@ -168,13 +167,14 @@
 </head>
 <body>
     <div class="header-container">
-        <img src="https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg" alt="Daily News Logo" class="logo">
+        <img src="https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg" alt="Site Logo" class="logo-tab">
         <div class="header-text">
             <h1>Free Student Newspapers</h1>
             <p class="subtitle">Daily news from India's top publications</p>
         </div>
     </div>
     
+    <!-- Rest of your HTML content remains the same -->
     <div class="date-display" id="current-date">
         <!-- Date/time will be inserted by JavaScript -->
     </div>
@@ -291,20 +291,6 @@
                 }
             });
         }, 300000); // 5 minutes
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Preload logo for better performance
-        const img = new Image();
-        img.src = 'https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg';
     </script>
 </body>
 </html>
