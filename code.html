@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Student Newspapers</title>
+    <style>
+        /* Main styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        
+        .subtitle {
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .date-display {
+            font-size: 1.1em;
+            margin: 15px 0;
+            text-align: center;
+            color: #666;
+        }
+        
+        /* Newspaper sections */
+        .newspaper-section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .newspaper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .newspaper-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .newspaper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .newspaper-name {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+        
+        .view-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .view-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .newspaper-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .disclaimer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Free Student Newspapers</h1>
+        <p class="subtitle">Daily news from India's top publications</p>
+    </header>
+    
+    <div class="date-display" id="current-date">
+        <!-- Date will be inserted by JavaScript -->
+    </div>
+    
+    <div class="newspaper-section">
+        <h2 class="section-title">English Newspapers</h2>
+        <div class="newspaper-grid">
+            <div class="newspaper-card">
+                <h3 class="newspaper-name">The Hindu</h3>
+                <p>India's national daily with in-depth coverage of news and events.</p>
+                <a href="https://epaper.thehindu.com" class="view-btn" target="_blank">Read E-Paper</a>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name">Times of India</h3>
+                <p>India's largest English-language daily newspaper.</p>
+                <a href="https://epaper.timesgroup.com" class="view-btn" target="_blank">Read E-Paper</a>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name">Hindustan Times</h3>
+                <p>Leading daily newspaper with focus on national and international news.</p>
+                <a href="https://epaper.hindustantimes.com" class="view-btn" target="_blank">Read E-Paper</a>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name">Indian Express</h3>
+                <p>Known for its journalism and editorial excellence.</p>
+                <a href="https://epaper.indianexpress.com" class="view-btn" target="_blank">Read E-Paper</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="newspaper-section">
+        <h2 class="section-title">Hindi Newspapers</h2>
+        <div class="newspaper-grid">
+            <div class="newspaper-card">
+                <h3 class="newspaper-name">Dainik Bhaskar</h3>
+                <p>India's largest read Hindi daily newspaper.</p>
+                <a href="https://epaper.bhaskar.com" class="view-btn" target="_blank">Read E-Paper</a>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name">Amar Ujala</h3>
+                <p>Popular Hindi daily with wide circulation.</p>
+                <a href="https://epaper.amarujala.com" class="view-btn" target="_blank">Read E-Paper</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="newspaper-section">
+        <h2 class="section-title">Telugu Newspapers</h2>
+        <div class="newspaper-grid">
+            <div class="newspaper-card">
+                <h3 class="newspaper-name">Eenadu</h3>
+                <p>Leading Telugu daily newspaper.</p>
+                <a href="https://epaper.eenadu.net" class="view-btn" target="_blank">Read E-Paper</a>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name">Sakshi</h3>
+                <p>Popular Telugu daily with comprehensive coverage.</p>
+                <a href="https://epaper.sakshi.com" class="view-btn" target="_blank">Read E-Paper</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> This website provides links to official newspaper e-papers. We do not host or own any content. Some newspapers may require subscriptions after free previews.</p>
+    </div>
+    
+    <footer>
+        <p>© 2023 Free Student Newspapers | Made for educational purposes</p>
+    </footer>
+    
+    <script>
+        // Display current date
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date();
+        document.getElementById('current-date').textContent = today.toLocaleDateString('en-IN', options);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
