@@ -4,27 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="3600"> <!-- Auto-refresh every hour -->
-    <title>Free Newspapers</title>
+    <title>Free Student Newspapers</title>
     <link rel="icon" href="https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg" type="image/jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Tag (gtag.js) - AW-17024690530 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17024690530"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17024690530');
+    </script>
+    
+    <!-- Google Tag (gtag.js) - G-LE428PNB7H -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LE428PNB7H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LE428PNB7H');
+    </script>
+    
     <style>
         /* Main styling */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #f9f9f9;
+            --dark-color: #333;
+            --gray-color: #666;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--dark-color);
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: var(--light-color);
         }
         
         header {
             text-align: center;
             padding: 20px 0;
-            background-color: #2c3e50;
+            background-color: var(--primary-color);
             color: white;
             border-radius: 5px;
             margin-bottom: 30px;
+            position: relative;
         }
         
         h1 {
@@ -41,7 +71,35 @@
             font-size: 1.1em;
             margin: 15px 0;
             text-align: center;
-            color: #666;
+            color: var(--gray-color);
+        }
+        
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .nav-tab:hover:not(.active) {
+            background-color: #f0f0f0;
         }
         
         /* Newspaper sections */
@@ -51,13 +109,30 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .newspaper-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .section-title {
-            color: #2c3e50;
-            border-bottom: 2px solid #e74c3c;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
             padding-bottom: 10px;
             margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
         }
         
         .newspaper-grid {
@@ -71,6 +146,7 @@
             border-radius: 5px;
             padding: 15px;
             transition: transform 0.3s ease;
+            position: relative;
         }
         
         .newspaper-card:hover {
@@ -79,13 +155,32 @@
         }
         
         .newspaper-name {
-            color: #e74c3c;
+            color: var(--secondary-color);
             margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .newspaper-name i {
+            margin-right: 8px;
+        }
+        
+        .newspaper-meta {
+            font-size: 0.85em;
+            color: var(--gray-color);
+            margin: 5px 0;
+        }
+        
+        .newspaper-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
         }
         
         .view-btn {
             display: inline-block;
-            background-color: #3498db;
+            background-color: var(--accent-color);
             color: white;
             padding: 8px 15px;
             text-decoration: none;
@@ -98,6 +193,61 @@
             background-color: #2980b9;
         }
         
+        .bookmark-btn {
+            background: none;
+            border: none;
+            color: var(--gray-color);
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        
+        .bookmark-btn:hover {
+            color: var(--secondary-color);
+        }
+        
+        .bookmark-btn.bookmarked {
+            color: var(--secondary-color);
+        }
+        
+        /* Search bar */
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        #search-input {
+            width: 60%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 1em;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        #search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        
+        /* Bookmark section */
+        #bookmarks-section {
+            min-height: 200px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-color);
+        }
+        
+        .empty-state i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+        
         /* Update notification */
         #update-notice {
             display: none;
@@ -105,7 +255,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: #2c3e50;
+            background: var(--primary-color);
             color: white;
             padding: 15px;
             text-align: center;
@@ -114,7 +264,7 @@
         }
         
         #update-notice a {
-            color: #e74c3c;
+            color: var(--secondary-color);
             font-weight: bold;
             margin-left: 10px;
         }
@@ -124,6 +274,19 @@
             .newspaper-grid {
                 grid-template-columns: 1fr;
             }
+            
+            #search-input {
+                width: 90%;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .nav-tab {
+                margin: 2px 0;
+                border-radius: 5px;
+            }
         }
         
         /* Footer */
@@ -131,7 +294,7 @@
             text-align: center;
             margin-top: 40px;
             padding: 20px;
-            color: #666;
+            color: var(--gray-color);
             font-size: 0.9em;
         }
         
@@ -141,23 +304,78 @@
             border-radius: 5px;
             margin-top: 30px;
             font-size: 0.9em;
-            color: #666;
+            color: var(--gray-color);
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .newspaper-section,
+        body.dark-mode .newspaper-card,
+        body.dark-mode .disclaimer {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border-color: #333;
+        }
+        
+        body.dark-mode .section-title {
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode #search-input {
+            background-color: #333;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+        
+        body.dark-mode .nav-tab {
+            background-color: #333;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+        
+        body.dark-mode .nav-tab.active {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Loading spinner */
+        .loader {
+            display: none;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--accent-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17024690530">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17024690530');
-</script>
 </head>
 <body>
     <header>
+        <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+        </button>
         <h1>Free Student Newspapers</h1>
         <p class="subtitle">Daily news from India's top publications</p>
     </header>
@@ -166,75 +384,282 @@
         <!-- Date/time will be inserted by JavaScript -->
     </div>
     
-    <div class="newspaper-section">
-        <h2 class="section-title">English Newspapers</h2>
-        <div class="newspaper-grid">
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search newspapers...">
+    </div>
+    
+    <div class="nav-tabs">
+        <div class="nav-tab active" data-tab="english">English</div>
+        <div class="nav-tab" data-tab="hindi">Hindi</div>
+        <div class="nav-tab" data-tab="telugu">Telugu</div>
+        <div class="nav-tab" data-tab="regional">Regional</div>
+        <div class="nav-tab" data-tab="international">International</div>
+        <div class="nav-tab" data-tab="bookmarks">Bookmarks</div>
+    </div>
+    
+    <div id="loader" class="loader"></div>
+    
+    <!-- English Newspapers Section -->
+    <div class="newspaper-section active" id="english-section">
+        <h2 class="section-title"><i class="fas fa-globe"></i>English Newspapers</h2>
+        <div class="newspaper-grid" id="english-grid">
             <div class="newspaper-card">
-                <h3 class="newspaper-name">The Hindu</h3>
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>The Hindu</h3>
+                <p class="newspaper-meta">National | Established: 1878</p>
                 <p>India's national daily with in-depth coverage of news and events.</p>
-                <a href="https://epaper.thehindu.com" class="view-btn" target="_blank">Read E-Paper</a>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.thehindu.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="The Hindu"><i class="far fa-bookmark"></i></button>
+                </div>
             </div>
             
             <div class="newspaper-card">
-                <h3 class="newspaper-name">Times of India</h3>
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Times of India</h3>
+                <p class="newspaper-meta">National | Established: 1838</p>
                 <p>India's largest English-language daily newspaper.</p>
-                <a href="https://epaper.timesgroup.com" class="view-btn" target="_blank">Read E-Paper</a>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.timesgroup.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Times of India"><i class="far fa-bookmark"></i></button>
+                </div>
             </div>
             
             <div class="newspaper-card">
-                <h3 class="newspaper-name">Hindustan Times</h3>
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Hindustan Times</h3>
+                <p class="newspaper-meta">National | Established: 1924</p>
                 <p>Leading daily newspaper with focus on national and international news.</p>
-                <a href="https://epaper.hindustantimes.com" class="view-btn" target="_blank">Read E-Paper</a>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.hindustantimes.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Hindustan Times"><i class="far fa-bookmark"></i></button>
+                </div>
             </div>
             
             <div class="newspaper-card">
-                <h3 class="newspaper-name">Indian Express</h3>
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Indian Express</h3>
+                <p class="newspaper-meta">National | Established: 1932</p>
                 <p>Known for its journalism and editorial excellence.</p>
-                <a href="https://epaper.indianexpress.com" class="view-btn" target="_blank">Read E-Paper</a>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.indianexpress.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Indian Express"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>The Telegraph</h3>
+                <p class="newspaper-meta">Eastern India | Established: 1982</p>
+                <p>Leading English daily with focus on Eastern and North-Eastern India.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.telegraphindia.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="The Telegraph"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Deccan Chronicle</h3>
+                <p class="newspaper-meta">Southern India | Established: 1938</p>
+                <p>Major English daily with focus on South Indian news.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.deccanchronicle.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Deccan Chronicle"><i class="far fa-bookmark"></i></button>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="newspaper-section">
-        <h2 class="section-title">Hindi Newspapers</h2>
-        <div class="newspaper-grid">
+    <!-- Hindi Newspapers Section -->
+    <div class="newspaper-section" id="hindi-section">
+        <h2 class="section-title"><i class="fas fa-language"></i>Hindi Newspapers</h2>
+        <div class="newspaper-grid" id="hindi-grid">
             <div class="newspaper-card">
-                <h3 class="newspaper-name">Dainik Bhaskar</h3>
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Dainik Bhaskar</h3>
+                <p class="newspaper-meta">National | Established: 1958</p>
                 <p>India's largest read Hindi daily newspaper.</p>
-                <a href="https://epaper.bhaskar.com" class="view-btn" target="_blank">Read E-Paper</a>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.bhaskar.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Dainik Bhaskar"><i class="far fa-bookmark"></i></button>
+                </div>
             </div>
             
             <div class="newspaper-card">
-                <h3 class="newspaper-name">Amar Ujala</h3>
-                <p>Popular Hindi daily with wide circulation.</p>
-                <a href="https://epaper.amarujala.com" class="view-btn" target="_blank">Read E-Paper</a>
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Amar Ujala</h3>
+                <p class="newspaper-meta">Northern India | Established: 1948</p>
+                <p>Popular Hindi daily with wide circulation in North India.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.amarujala.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Amar Ujala"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Dainik Jagran</h3>
+                <p class="newspaper-meta">National | Established: 1942</p>
+                <p>One of India's largest read Hindi newspapers.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.jagran.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Dainik Jagran"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Hindustan</h3>
+                <p class="newspaper-meta">National | Established: 1936</p>
+                <p>Leading Hindi daily published by Hindustan Times group.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.livehindustan.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Hindustan"><i class="far fa-bookmark"></i></button>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="newspaper-section">
-        <h2 class="section-title">Telugu Newspapers</h2>
-        <div class="newspaper-grid">
+    <!-- Telugu Newspapers Section -->
+    <div class="newspaper-section" id="telugu-section">
+        <h2 class="section-title"><i class="fas fa-language"></i>Telugu Newspapers</h2>
+        <div class="newspaper-grid" id="telugu-grid">
             <div class="newspaper-card">
-                <h3 class="newspaper-name">Eenadu</h3>
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Eenadu</h3>
+                <p class="newspaper-meta">Andhra Pradesh & Telangana | Established: 1974</p>
                 <p>Leading Telugu daily newspaper.</p>
-                <a href="https://epaper.eenadu.net" class="view-btn" target="_blank">Read E-Paper</a>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.eenadu.net" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Eenadu"><i class="far fa-bookmark"></i></button>
+                </div>
             </div>
             
             <div class="newspaper-card">
-                <h3 class="newspaper-name">Sakshi</h3>
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Sakshi</h3>
+                <p class="newspaper-meta">Andhra Pradesh & Telangana | Established: 2008</p>
                 <p>Popular Telugu daily with comprehensive coverage.</p>
-                <a href="https://epaper.sakshi.com" class="view-btn" target="_blank">Read E-Paper</a>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.sakshi.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Sakshi"><i class="far fa-bookmark"></i></button>
+                </div>
             </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Andhra Jyothy</h3>
+                <p class="newspaper-meta">Andhra Pradesh & Telangana | Established: 1960</p>
+                <p>Major Telugu daily known for investigative journalism.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.andhrajyothy.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Andhra Jyothy"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Regional Newspapers Section -->
+    <div class="newspaper-section" id="regional-section">
+        <h2 class="section-title"><i class="fas fa-map-marker-alt"></i>Regional Newspapers</h2>
+        <div class="newspaper-grid" id="regional-grid">
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Malayala Manorama (Malayalam)</h3>
+                <p class="newspaper-meta">Kerala | Established: 1888</p>
+                <p>Most widely read Malayalam newspaper.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.manoramaonline.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Malayala Manorama"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Daily Thanthi (Tamil)</h3>
+                <p class="newspaper-meta">Tamil Nadu | Established: 1942</p>
+                <p>Largest circulated Tamil daily newspaper.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.dailythanthi.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Daily Thanthi"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Prajavani (Kannada)</h3>
+                <p class="newspaper-meta">Karnataka | Established: 1948</p>
+                <p>Leading Kannada daily published by The Printers (Mysore).</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.prajavani.net" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Prajavani"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Anandabazar Patrika (Bengali)</h3>
+                <p class="newspaper-meta">West Bengal | Established: 1922</p>
+                <p>Most widely read Bengali newspaper.</p>
+                <div class="newspaper-actions">
+                    <a href="https://epaper.anandabazar.com" class="view-btn" target="_blank">Read E-Paper</a>
+                    <button class="bookmark-btn" data-paper="Anandabazar Patrika"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- International Newspapers Section -->
+    <div class="newspaper-section" id="international-section">
+        <h2 class="section-title"><i class="fas fa-globe-americas"></i>International Newspapers</h2>
+        <div class="newspaper-grid" id="international-grid">
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>The New York Times</h3>
+                <p class="newspaper-meta">USA | Established: 1851</p>
+                <p>American daily newspaper based in New York City.</p>
+                <div class="newspaper-actions">
+                    <a href="https://www.nytimes.com" class="view-btn" target="_blank">Visit Website</a>
+                    <button class="bookmark-btn" data-paper="The New York Times"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>The Guardian</h3>
+                <p class="newspaper-meta">UK | Established: 1821</p>
+                <p>British daily newspaper known for its international reporting.</p>
+                <div class="newspaper-actions">
+                    <a href="https://www.theguardian.com/international" class="view-btn" target="_blank">Visit Website</a>
+                    <button class="bookmark-btn" data-paper="The Guardian"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>BBC News</h3>
+                <p class="newspaper-meta">UK | Established: 1922</p>
+                <p>British public service broadcaster providing global news.</p>
+                <div class="newspaper-actions">
+                    <a href="https://www.bbc.com/news" class="view-btn" target="_blank">Visit Website</a>
+                    <button class="bookmark-btn" data-paper="BBC News"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="newspaper-card">
+                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Al Jazeera</h3>
+                <p class="newspaper-meta">Qatar | Established: 1996</p>
+                <p>State-funded broadcaster in Doha providing global news.</p>
+                <div class="newspaper-actions">
+                    <a href="https://www.aljazeera.com" class="view-btn" target="_blank">Visit Website</a>
+                    <button class="bookmark-btn" data-paper="Al Jazeera"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bookmarks Section -->
+    <div class="newspaper-section" id="bookmarks-section">
+        <h2 class="section-title"><i class="fas fa-bookmark"></i>Your Bookmarks</h2>
+        <div class="newspaper-grid" id="bookmarks-grid">
+            <!-- Bookmarks will be inserted here by JavaScript -->
+        </div>
+        <div class="empty-state" id="empty-bookmarks">
+            <i class="far fa-bookmark"></i>
+            <h3>No bookmarks yet</h3>
+            <p>Click the bookmark icon on any newspaper to save it here</p>
         </div>
     </div>
     
     <div class="disclaimer">
         <p><strong>Disclaimer:</strong> This website provides links to official newspaper e-papers. We do not host or own any content. Some newspapers may require subscriptions after free previews.</p>
+        <p><strong>Note:</strong> International newspapers may have limited free articles or require registration.</p>
     </div>
     
     <footer>
         <p>© <span id="current-year"></span> Free Student Newspapers | Made for educational purposes</p>
+        <p>Suggestions? <a href="mailto:shravankumarssk01@gmail.com">Contact us</a></p>
     </footer>
     
     <!-- Update notification -->
@@ -264,6 +689,152 @@
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
+        // Tab navigation
+        const tabs = document.querySelectorAll('.nav-tab');
+        const sections = document.querySelectorAll('.newspaper-section');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and sections
+                tabs.forEach(t => t.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding section
+                tab.classList.add('active');
+                const sectionId = `${tab.dataset.tab}-section`;
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Show loader briefly for better UX
+                const loader = document.getElementById('loader');
+                loader.style.display = 'block';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 300);
+            });
+        });
+        
+        // Bookmark functionality
+        const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
+        const bookmarksGrid = document.getElementById('bookmarks-grid');
+        const emptyBookmarks = document.getElementById('empty-bookmarks');
+        
+        // Load bookmarks from localStorage
+        let bookmarks = JSON.parse(localStorage.getItem('newspaperBookmarks')) || [];
+        
+        function updateBookmarksDisplay() {
+            bookmarksGrid.innerHTML = '';
+            
+            if (bookmarks.length === 0) {
+                emptyBookmarks.style.display = 'block';
+                return;
+            }
+            
+            emptyBookmarks.style.display = 'none';
+            
+            // Find and display all bookmarked newspapers
+            document.querySelectorAll('.newspaper-card').forEach(card => {
+                const paperName = card.querySelector('.bookmark-btn').dataset.paper;
+                if (bookmarks.includes(paperName)) {
+                    const clone = card.cloneNode(true);
+                    const btn = clone.querySelector('.bookmark-btn');
+                    btn.classList.add('bookmarked');
+                    btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                    bookmarksGrid.appendChild(clone);
+                }
+            });
+        }
+        
+        // Initialize bookmarks display
+        updateBookmarksDisplay();
+        
+        // Handle bookmark clicks
+        bookmarkButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const paperName = this.dataset.paper;
+                const index = bookmarks.indexOf(paperName);
+                
+                if (index === -1) {
+                    // Add to bookmarks
+                    bookmarks.push(paperName);
+                    this.innerHTML = '<i class="fas fa-bookmark"></i>';
+                    this.classList.add('bookmarked');
+                } else {
+                    // Remove from bookmarks
+                    bookmarks.splice(index, 1);
+                    this.innerHTML = '<i class="far fa-bookmark"></i>';
+                    this.classList.remove('bookmarked');
+                }
+                
+                // Save to localStorage and update display
+                localStorage.setItem('newspaperBookmarks', JSON.stringify(bookmarks));
+                updateBookmarksDisplay();
+            });
+            
+            // Set initial state for bookmarked items
+            if (bookmarks.includes(button.dataset.paper)) {
+                button.innerHTML = '<i class="fas fa-bookmark"></i>';
+                button.classList.add('bookmarked');
+            }
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const activeGrid = document.querySelector('.newspaper-section.active .newspaper-grid');
+            
+            if (!activeGrid) return;
+            
+            const cards = activeGrid.querySelectorAll('.newspaper-card');
+            let hasResults = false;
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = '';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show "no results" message if needed
+            const noResults = activeGrid.querySelector('.no-results');
+            if (!hasResults && !noResults) {
+                const message = document.createElement('div');
+                message.className = 'no-results empty-state';
+                message.innerHTML = '<i class="fas fa-search"></i><h3>No matching newspapers found</h3>';
+                activeGrid.appendChild(message);
+            } else if (hasResults && noResults) {
+                noResults.remove();
+            }
+        });
+        
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved user preference or use system preference
+        if (localStorage.getItem('darkMode') === 'enabled' || 
+            (localStorage.getItem('darkMode') !== 'disabled' && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            if (isDark) {
+                localStorage.setItem('darkMode', 'enabled');
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
         // Check for content updates every 5 minutes
         let lastUpdateCheck = new Date();
         setInterval(() => {
@@ -278,6 +849,16 @@
                 }
             });
         }, 300000); // 5 minutes
+        // Add service worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
     </script>
 </body>
 </html>
