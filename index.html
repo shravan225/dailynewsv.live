@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="3600"> <!-- Auto-refresh every hour -->
-    <title>Free Newspapers</title>
+    <meta name="description" content="Get today's latest Indian and International newspaper epaper links. Updated daily. No downloads hosted.">
+    <meta name="keywords" content="free newspapers, epaper, daily news, online newspapers, read newspapers online">
+    <title>Free Online Newspapers - Read Official E-Papers Without Paywalls | DailyNewsV</title>
     <link rel="icon" href="https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg" type="image/jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Tag (gtag.js) - AW-17024690530 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17024690530"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17024690530');
-    </script>
-    
-    <!-- Google Tag (gtag.js) - G-LE428PNB7H -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LE428PNB7H"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -26,10 +18,24 @@
       gtag('config', 'G-LE428PNB7H');
     </script>
     
+    <!-- OneSignal Push Notification -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(function(OneSignal) {
+        OneSignal.init({
+          appId: "a356be2c-da41-43e8-9d82-a1982624eeed",
+          safari_web_id: "WEB_PUSH_ID_FOR_SAFARI",
+          notifyButton: {
+            enable: true,
+          },
+        });
+      });
+    </script>
+    
     <style>
-        /* Main styling */
         :root {
-            --primary-color: #2c3e50;
+            --primary-color: #121212;
             --secondary-color: #e74c3c;
             --accent-color: #3498db;
             --light-color: #f9f9f9;
@@ -369,6 +375,59 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* Newsletter form */
+        .newsletter-form {
+            background: var(--primary-color);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter-form h3 {
+            margin-top: 0;
+        }
+        
+        .newsletter-form input[type="email"] {
+            padding: 10px;
+            width: 60%;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .newsletter-form button {
+            padding: 10px 20px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* Social links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        body.dark-mode .social-links a {
+            color: #e0e0e0;
+        }
     </style>
 </head>
 <body>
@@ -376,8 +435,8 @@
         <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
             <i class="fas fa-moon"></i>
         </button>
-        <h1>Free Newspapers</h1>
-        <p class="subtitle">Daily news from India's top publications</p>
+        <h1>Free Online Newspapers</h1>
+        <p class="subtitle">Read Official E-Papers Without Paywalls</p>
     </header>
     
     <div class="date-display" id="current-date">
@@ -401,67 +460,9 @@
     
     <!-- English Newspapers Section -->
     <div class="newspaper-section active" id="english-section">
-        <h2 class="section-title"><i class="fas fa-globe"></i>English Newspapers</h2>
+        <h2 class="section-title"><i class="fas fa-globe"></i>English Newspapers - <span id="today-date"></span></h2>
         <div class="newspaper-grid" id="english-grid">
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>The Hindu</h3>
-                <p class="newspaper-meta">National | Established: 1878</p>
-                <p>India's national daily with in-depth coverage of news and events.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.thehindu.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="The Hindu"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Times of India</h3>
-                <p class="newspaper-meta">National | Established: 1838</p>
-                <p>India's largest English-language daily newspaper.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.timesgroup.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Times of India"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Hindustan Times</h3>
-                <p class="newspaper-meta">National | Established: 1924</p>
-                <p>Leading daily newspaper with focus on national and international news.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.hindustantimes.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Hindustan Times"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Indian Express</h3>
-                <p class="newspaper-meta">National | Established: 1932</p>
-                <p>Known for its journalism and editorial excellence.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.indianexpress.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Indian Express"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>The Telegraph</h3>
-                <p class="newspaper-meta">Eastern India | Established: 1982</p>
-                <p>Leading English daily with focus on Eastern and North-Eastern India.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.telegraphindia.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="The Telegraph"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Deccan Chronicle</h3>
-                <p class="newspaper-meta">Southern India | Established: 1938</p>
-                <p>Major English daily with focus on South Indian news.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.deccanchronicle.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Deccan Chronicle"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
+            <!-- Content loaded dynamically -->
         </div>
     </div>
     
@@ -469,45 +470,7 @@
     <div class="newspaper-section" id="hindi-section">
         <h2 class="section-title"><i class="fas fa-language"></i>Hindi Newspapers</h2>
         <div class="newspaper-grid" id="hindi-grid">
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Dainik Bhaskar</h3>
-                <p class="newspaper-meta">National | Established: 1958</p>
-                <p>India's largest read Hindi daily newspaper.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.bhaskar.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Dainik Bhaskar"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Amar Ujala</h3>
-                <p class="newspaper-meta">Northern India | Established: 1948</p>
-                <p>Popular Hindi daily with wide circulation in North India.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.amarujala.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Amar Ujala"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Dainik Jagran</h3>
-                <p class="newspaper-meta">National | Established: 1942</p>
-                <p>One of India's largest read Hindi newspapers.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.jagran.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Dainik Jagran"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Hindustan</h3>
-                <p class="newspaper-meta">National | Established: 1936</p>
-                <p>Leading Hindi daily published by Hindustan Times group.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.livehindustan.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Hindustan"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
+            <!-- Content loaded dynamically -->
         </div>
     </div>
     
@@ -515,35 +478,7 @@
     <div class="newspaper-section" id="telugu-section">
         <h2 class="section-title"><i class="fas fa-language"></i>Telugu Newspapers</h2>
         <div class="newspaper-grid" id="telugu-grid">
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Eenadu</h3>
-                <p class="newspaper-meta">Andhra Pradesh & Telangana | Established: 1974</p>
-                <p>Leading Telugu daily newspaper.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.eenadu.net" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Eenadu"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Sakshi</h3>
-                <p class="newspaper-meta">Andhra Pradesh & Telangana | Established: 2008</p>
-                <p>Popular Telugu daily with comprehensive coverage.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.sakshi.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Sakshi"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Andhra Jyothy</h3>
-                <p class="newspaper-meta">Andhra Pradesh & Telangana | Established: 1960</p>
-                <p>Major Telugu daily known for investigative journalism.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.andhrajyothy.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Andhra Jyothy"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
+            <!-- Content loaded dynamically -->
         </div>
     </div>
     
@@ -551,45 +486,7 @@
     <div class="newspaper-section" id="regional-section">
         <h2 class="section-title"><i class="fas fa-map-marker-alt"></i>Regional Newspapers</h2>
         <div class="newspaper-grid" id="regional-grid">
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Malayala Manorama (Malayalam)</h3>
-                <p class="newspaper-meta">Kerala | Established: 1888</p>
-                <p>Most widely read Malayalam newspaper.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.manoramaonline.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Malayala Manorama"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Daily Thanthi (Tamil)</h3>
-                <p class="newspaper-meta">Tamil Nadu | Established: 1942</p>
-                <p>Largest circulated Tamil daily newspaper.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.dailythanthi.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Daily Thanthi"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Prajavani (Kannada)</h3>
-                <p class="newspaper-meta">Karnataka | Established: 1948</p>
-                <p>Leading Kannada daily published by The Printers (Mysore).</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.prajavani.net" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Prajavani"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Anandabazar Patrika (Bengali)</h3>
-                <p class="newspaper-meta">West Bengal | Established: 1922</p>
-                <p>Most widely read Bengali newspaper.</p>
-                <div class="newspaper-actions">
-                    <a href="https://epaper.anandabazar.com" class="view-btn" target="_blank">Read E-Paper</a>
-                    <button class="bookmark-btn" data-paper="Anandabazar Patrika"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
+            <!-- Content loaded dynamically -->
         </div>
     </div>
     
@@ -597,45 +494,7 @@
     <div class="newspaper-section" id="international-section">
         <h2 class="section-title"><i class="fas fa-globe-americas"></i>International Newspapers</h2>
         <div class="newspaper-grid" id="international-grid">
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>The New York Times</h3>
-                <p class="newspaper-meta">USA | Established: 1851</p>
-                <p>American daily newspaper based in New York City.</p>
-                <div class="newspaper-actions">
-                    <a href="https://www.nytimes.com" class="view-btn" target="_blank">Visit Website</a>
-                    <button class="bookmark-btn" data-paper="The New York Times"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>The Guardian</h3>
-                <p class="newspaper-meta">UK | Established: 1821</p>
-                <p>British daily newspaper known for its international reporting.</p>
-                <div class="newspaper-actions">
-                    <a href="https://www.theguardian.com/international" class="view-btn" target="_blank">Visit Website</a>
-                    <button class="bookmark-btn" data-paper="The Guardian"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>BBC News</h3>
-                <p class="newspaper-meta">UK | Established: 1922</p>
-                <p>British public service broadcaster providing global news.</p>
-                <div class="newspaper-actions">
-                    <a href="https://www.bbc.com/news" class="view-btn" target="_blank">Visit Website</a>
-                    <button class="bookmark-btn" data-paper="BBC News"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            
-            <div class="newspaper-card">
-                <h3 class="newspaper-name"><i class="fas fa-newspaper"></i>Al Jazeera</h3>
-                <p class="newspaper-meta">Qatar | Established: 1996</p>
-                <p>State-funded broadcaster in Doha providing global news.</p>
-                <div class="newspaper-actions">
-                    <a href="https://www.aljazeera.com" class="view-btn" target="_blank">Visit Website</a>
-                    <button class="bookmark-btn" data-paper="Al Jazeera"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
+            <!-- Content loaded dynamically -->
         </div>
     </div>
     
@@ -652,13 +511,37 @@
         </div>
     </div>
     
+    <!-- Newsletter Section -->
+    <div class="newsletter-form">
+        <h3><i class="fas fa-envelope"></i> Get Daily Newspaper Links in Your Email</h3>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        <p>We'll send you today's newspaper links every morning</p>
+    </div>
+    
+    <!-- Social Links -->
+    <div class="social-links">
+        <a href="https://t.me/dailynewsv" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://twitter.com/dailynewsv" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/dailynewsv" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+    
+    <!-- Important Pages Links -->
+    <div style="text-align: center; margin: 20px 0;">
+        <a href="#about" style="margin: 0 10px;">About Us</a>
+        <a href="#privacy" style="margin: 0 10px;">Privacy Policy</a>
+        <a href="#disclaimer" style="margin: 0 10px;">Disclaimer</a>
+    </div>
+    
     <div class="disclaimer">
         <p><strong>Disclaimer:</strong> This website provides links to official newspaper e-papers. We do not host or own any content. Some newspapers may require subscriptions after free previews.</p>
         <p><strong>Note:</strong> International newspapers may have limited free articles or require registration.</p>
     </div>
     
     <footer>
-        <p>© <span id="current-year"></span> Free Newspapers | Made for educational purposes</p>
+        <p>© <span id="current-year"></span> DailyNewsV.live | Made for educational purposes</p>
         <p>Suggestions? <a href="mailto:shravankumarssk01@gmail.com">Contact us</a></p>
     </footer>
     
@@ -668,6 +551,201 @@
     </div>
     
     <script>
+        // ======================
+        // AUTO-CONTENT SYSTEM
+        // ======================
+        
+        // Newspaper database
+        const newspapers = {
+            english: [
+                {
+                    name: "The Hindu",
+                    meta: "National | Established: 1878",
+                    desc: "India's national daily with in-depth coverage of news and events.",
+                    url: "https://epaper.thehindu.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Times of India",
+                    meta: "National | Established: 1838",
+                    desc: "India's largest English-language daily newspaper.",
+                    url: "https://epaper.timesgroup.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Hindustan Times",
+                    meta: "National | Established: 1924",
+                    desc: "Leading daily newspaper with focus on national and international news.",
+                    url: "https://epaper.hindustantimes.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Indian Express",
+                    meta: "National | Established: 1932",
+                    desc: "Known for its journalism and editorial excellence.",
+                    url: "https://epaper.indianexpress.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "The Telegraph",
+                    meta: "Eastern India | Established: 1982",
+                    desc: "Leading English daily with focus on Eastern and North-Eastern India.",
+                    url: "https://epaper.telegraphindia.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Deccan Chronicle",
+                    meta: "Southern India | Established: 1938",
+                    desc: "Major English daily with focus on South Indian news.",
+                    url: "https://epaper.deccanchronicle.com",
+                    icon: "newspaper"
+                }
+            ],
+            hindi: [
+                {
+                    name: "Dainik Bhaskar",
+                    meta: "National | Established: 1958",
+                    desc: "India's largest read Hindi daily newspaper.",
+                    url: "https://epaper.bhaskar.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Amar Ujala",
+                    meta: "Northern India | Established: 1948",
+                    desc: "Popular Hindi daily with wide circulation in North India.",
+                    url: "https://epaper.amarujala.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Dainik Jagran",
+                    meta: "National | Established: 1942",
+                    desc: "One of India's largest read Hindi newspapers.",
+                    url: "https://epaper.jagran.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Hindustan",
+                    meta: "National | Established: 1936",
+                    desc: "Leading Hindi daily published by Hindustan Times group.",
+                    url: "https://epaper.livehindustan.com",
+                    icon: "newspaper"
+                }
+            ],
+            telugu: [
+                {
+                    name: "Eenadu",
+                    meta: "Andhra Pradesh & Telangana | Established: 1974",
+                    desc: "Leading Telugu daily newspaper.",
+                    url: "https://epaper.eenadu.net",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Sakshi",
+                    meta: "Andhra Pradesh & Telangana | Established: 2008",
+                    desc: "Popular Telugu daily with comprehensive coverage.",
+                    url: "https://epaper.sakshi.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Andhra Jyothy",
+                    meta: "Andhra Pradesh & Telangana | Established: 1960",
+                    desc: "Major Telugu daily known for investigative journalism.",
+                    url: "https://epaper.andhrajyothy.com",
+                    icon: "newspaper"
+                }
+            ],
+            regional: [
+                {
+                    name: "Malayala Manorama (Malayalam)",
+                    meta: "Kerala | Established: 1888",
+                    desc: "Most widely read Malayalam newspaper.",
+                    url: "https://epaper.manoramaonline.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Daily Thanthi (Tamil)",
+                    meta: "Tamil Nadu | Established: 1942",
+                    desc: "Largest circulated Tamil daily newspaper.",
+                    url: "https://epaper.dailythanthi.com",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Prajavani (Kannada)",
+                    meta: "Karnataka | Established: 1948",
+                    desc: "Leading Kannada daily published by The Printers (Mysore).",
+                    url: "https://epaper.prajavani.net",
+                    icon: "newspaper"
+                },
+                {
+                    name: "Anandabazar Patrika (Bengali)",
+                    meta: "West Bengal | Established: 1922",
+                    desc: "Most widely read Bengali newspaper.",
+                    url: "https://epaper.anandabazar.com",
+                    icon: "newspaper"
+                }
+            ],
+            international: [
+                {
+                    name: "The New York Times",
+                    meta: "USA | Established: 1851",
+                    desc: "American daily newspaper based in New York City.",
+                    url: "https://www.nytimes.com",
+                    icon: "globe-americas"
+                },
+                {
+                    name: "The Guardian",
+                    meta: "UK | Established: 1821",
+                    desc: "British daily newspaper known for its international reporting.",
+                    url: "https://www.theguardian.com/international",
+                    icon: "globe-europe"
+                },
+                {
+                    name: "BBC News",
+                    meta: "UK | Established: 1922",
+                    desc: "British public service broadcaster providing global news.",
+                    url: "https://www.bbc.com/news",
+                    icon: "broadcast-tower"
+                },
+                {
+                    name: "Al Jazeera",
+                    meta: "Qatar | Established: 1996",
+                    desc: "State-funded broadcaster in Doha providing global news.",
+                    url: "https://www.aljazeera.com",
+                    icon: "globe-asia"
+                }
+            ]
+        };
+
+        // Generate newspaper cards
+        function generateNewspaperCards() {
+            for (const lang in newspapers) {
+                const grid = document.getElementById(`${lang}-grid`);
+                grid.innerHTML = '';
+                
+                newspapers[lang].forEach(paper => {
+                    const card = document.createElement('div');
+                    card.className = 'newspaper-card';
+                    card.innerHTML = `
+                        <h3 class="newspaper-name"><i class="fas fa-${paper.icon}"></i>${paper.name}</h3>
+                        <p class="newspaper-meta">${paper.meta}</p>
+                        <p>${paper.desc}</p>
+                        <div class="newspaper-actions">
+                            <a href="${paper.url}" class="view-btn" target="_blank">${lang === 'international' ? 'Visit Website' : 'Read E-Paper'}</a>
+                            <button class="bookmark-btn" data-paper="${paper.name}"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+            
+            // Initialize bookmark buttons
+            initializeBookmarks();
+        }
+
+        // ======================
+        // CORE FUNCTIONALITY
+        // ======================
+
         // Real-time clock with auto-updating date
         function updateDateTime() {
             const options = { 
@@ -680,8 +758,9 @@
                 second: '2-digit',
                 timeZone: 'Asia/Kolkata'
             };
-            document.getElementById('current-date').textContent = 
-                new Date().toLocaleDateString('en-IN', options);
+            const now = new Date();
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-IN', options);
+            document.getElementById('today-date').textContent = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
         }
         setInterval(updateDateTime, 1000);
         updateDateTime(); // Initial call
@@ -714,42 +793,52 @@
         });
         
         // Bookmark functionality
-        const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
-        const bookmarksGrid = document.getElementById('bookmarks-grid');
-        const emptyBookmarks = document.getElementById('empty-bookmarks');
-        
-        // Load bookmarks from localStorage
-        let bookmarks = JSON.parse(localStorage.getItem('newspaperBookmarks')) || [];
-        
-        function updateBookmarksDisplay() {
-            bookmarksGrid.innerHTML = '';
+        function initializeBookmarks() {
+            const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
+            const bookmarksGrid = document.getElementById('bookmarks-grid');
+            const emptyBookmarks = document.getElementById('empty-bookmarks');
             
-            if (bookmarks.length === 0) {
-                emptyBookmarks.style.display = 'block';
-                return;
+            // Load bookmarks from localStorage
+            let bookmarks = JSON.parse(localStorage.getItem('newspaperBookmarks')) || [];
+            
+            function updateBookmarksDisplay() {
+                bookmarksGrid.innerHTML = '';
+                
+                if (bookmarks.length === 0) {
+                    emptyBookmarks.style.display = 'block';
+                    return;
+                }
+                
+                emptyBookmarks.style.display = 'none';
+                
+                // Find and display all bookmarked newspapers
+                for (const lang in newspapers) {
+                    newspapers[lang].forEach(paper => {
+                        if (bookmarks.includes(paper.name)) {
+                            const card = document.createElement('div');
+                            card.className = 'newspaper-card';
+                            card.innerHTML = `
+                                <h3 class="newspaper-name"><i class="fas fa-${paper.icon}"></i>${paper.name}</h3>
+                                <p class="newspaper-meta">${paper.meta}</p>
+                                <p>${paper.desc}</p>
+                                <div class="newspaper-actions">
+                                    <a href="${paper.url}" class="view-btn" target="_blank">${lang === 'international' ? 'Visit Website' : 'Read E-Paper'}</a>
+                                    <button class="bookmark-btn bookmarked" data-paper="${paper.name}"><i class="fas fa-bookmark"></i></button>
+                                </div>
+                            `;
+                            bookmarksGrid.appendChild(card);
+                        }
+                    });
+                }
+                
+                // Add event listeners to new bookmark buttons
+                document.querySelectorAll('#bookmarks-grid .bookmark-btn').forEach(button => {
+                    button.addEventListener('click', handleBookmarkClick);
+                });
             }
             
-            emptyBookmarks.style.display = 'none';
-            
-            // Find and display all bookmarked newspapers
-            document.querySelectorAll('.newspaper-card').forEach(card => {
-                const paperName = card.querySelector('.bookmark-btn').dataset.paper;
-                if (bookmarks.includes(paperName)) {
-                    const clone = card.cloneNode(true);
-                    const btn = clone.querySelector('.bookmark-btn');
-                    btn.classList.add('bookmarked');
-                    btn.innerHTML = '<i class="fas fa-bookmark"></i>';
-                    bookmarksGrid.appendChild(clone);
-                }
-            });
-        }
-        
-        // Initialize bookmarks display
-        updateBookmarksDisplay();
-        
-        // Handle bookmark clicks
-        bookmarkButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            // Handle bookmark clicks
+            function handleBookmarkClick() {
                 const paperName = this.dataset.paper;
                 const index = bookmarks.indexOf(paperName);
                 
@@ -768,15 +857,34 @@
                 // Save to localStorage and update display
                 localStorage.setItem('newspaperBookmarks', JSON.stringify(bookmarks));
                 updateBookmarksDisplay();
+                
+                // Update bookmark buttons in all sections
+                document.querySelectorAll(`.bookmark-btn[data-paper="${paperName}"]`).forEach(btn => {
+                    if (index === -1) {
+                        btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                        btn.classList.add('bookmarked');
+                    } else {
+                        btn.innerHTML = '<i class="far fa-bookmark"></i>';
+                        btn.classList.remove('bookmarked');
+                    }
+                });
+            }
+            
+            // Initialize bookmark buttons
+            bookmarkButtons.forEach(button => {
+                button.addEventListener('click', handleBookmarkClick);
+                
+                // Set initial state for bookmarked items
+                if (bookmarks.includes(button.dataset.paper)) {
+                    button.innerHTML = '<i class="fas fa-bookmark"></i>';
+                    button.classList.add('bookmarked');
+                }
             });
             
-            // Set initial state for bookmarked items
-            if (bookmarks.includes(button.dataset.paper)) {
-                button.innerHTML = '<i class="fas fa-bookmark"></i>';
-                button.classList.add('bookmarked');
-            }
-        });
-        
+            // Initialize bookmarks display
+            updateBookmarksDisplay();
+        }
+
         // Search functionality
         const searchInput = document.getElementById('search-input');
         
@@ -835,6 +943,15 @@
             }
         });
         
+        // Newsletter form
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            // In a real implementation, you would send this to your email service
+            alert(`Thank you for subscribing! We'll send daily updates to ${email}`);
+            this.querySelector('input').value = '';
+        });
+        
         // Check for content updates every 5 minutes
         let lastUpdateCheck = new Date();
         setInterval(() => {
@@ -849,7 +966,8 @@
                 }
             });
         }, 300000); // 5 minutes
-        // Add service worker for offline functionality
+        
+        // Service worker for offline functionality
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js').then(registration => {
@@ -859,6 +977,18 @@
                 });
             });
         }
+        
+        // Generate all content on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            generateNewspaperCards();
+            
+            // Simulate loading time
+            const loader = document.getElementById('loader');
+            loader.style.display = 'block';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        });
     </script>
 </body>
 </html>
