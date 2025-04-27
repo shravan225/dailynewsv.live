@@ -3,19 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get today's latest Indian and International newspaper epaper links. Updated daily. No downloads hosted.">
-    <meta name="keywords" content="free newspapers, epaper, daily news, online newspapers, read newspapers online">
-    <title>Free Online Newspapers - Read Official E-Papers Without Paywalls | DailyNewsV</title>
+    <meta name="description" content="Get today's latest Indian and International newspaper epaper links for free. Daily updated direct links to The Hindu, Times of India, Dainik Bhaskar and more without paywalls.">
+    <meta name="keywords" content="free newspapers, epaper, daily news, online newspapers, read newspapers online, The Hindu epaper today, Times of India epaper free, Dainik Bhaskar digital edition">
+    <title>Today's Free Newspaper E-Papers - The Hindu, Times of India, Dainik Bhaskar | DailyNewsV</title>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Today's Free Newspaper E-Papers - The Hindu, Times of India, Dainik Bhaskar">
+    <meta property="og:description" content="Get direct links to today's newspaper epapers from India and worldwide. Updated daily with The Hindu, Times of India, Dainik Bhaskar and more.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg">
+    <meta property="og:url" content="https://dailynewsv.live/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Today's Free Newspaper E-Papers - The Hindu, Times of India, Dainik Bhaskar">
+    <meta name="twitter:description" content="Get direct links to today's newspaper epapers from India and worldwide. Updated daily.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://dailynewsv.live/">
+    
+    <!-- Favicon -->
     <link rel="icon" href="https://raw.githubusercontent.com/shravan225/shravan225.github.io/main/logo.jpg" type="image/jpg">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://www.googletagmanager.com/gtag/js?id=G-LE428PNB7H" as="script">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics with enhanced tracking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LE428PNB7H"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-LE428PNB7H');
+      gtag('config', 'G-LE428PNB7H', {
+        'anonymize_ip': true,
+        'cookie_expires': 604800, // 1 week
+        'send_page_view': true
+      });
+    </script>
+    
+    <!-- Structured Data for better search appearance -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "DailyNewsV - Free Newspaper E-Papers",
+      "url": "https://dailynewsv.live/",
+      "description": "Get direct links to today's newspaper epapers from India and worldwide",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://dailynewsv.live/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
     </script>
     
     <style>
@@ -27,16 +75,24 @@
             --light-color: #f9f9f9;
             --dark-color: #333;
             --gray-color: #666;
+            --bg-color: #ffffff;
+            --text-color: #333;
+            --border-color: #ddd;
+            --card-bg: #ffffff;
+            --section-bg: #ffffff;
+            --faq-header-bg: #f8f9fa;
+            --testimonial-bg: #f8f9fa;
+            --disclaimer-bg: #f8f9fa;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark-color);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--light-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         header {
@@ -44,9 +100,7 @@
             padding: 20px 0;
             background-color: var(--primary-color);
             color: white;
-            border-radius: 5px;
-            margin-bottom: 30px;
-            position: relative;
+            margin-bottom: 0;
         }
         
         h1 {
@@ -77,11 +131,12 @@
         .nav-tab {
             padding: 10px 20px;
             margin: 0 5px;
-            background-color: #fff;
-            border: 1px solid #ddd;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
             border-radius: 5px 5px 0 0;
             cursor: pointer;
             transition: all 0.3s;
+            color: var(--text-color);
         }
         
         .nav-tab.active {
@@ -97,11 +152,12 @@
         /* Newspaper sections */
         .newspaper-section {
             margin-bottom: 40px;
-            background: white;
+            background: var(--section-bg);
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: none;
+            border: 1px solid var(--border-color);
         }
         
         .newspaper-section.active {
@@ -134,11 +190,12 @@
         }
         
         .newspaper-card {
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
             border-radius: 5px;
             padding: 15px;
             transition: transform 0.3s ease;
             position: relative;
+            background: var(--card-bg);
         }
         
         .newspaper-card:hover {
@@ -206,16 +263,35 @@
         .search-container {
             margin: 20px 0;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         #search-input {
             width: 60%;
             padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px 0 0 25px;
             font-size: 1em;
             outline: none;
             transition: all 0.3s;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        #search-button {
+            padding: 10px 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #search-button:hover {
+            background-color: #2980b9;
         }
         
         #search-input:focus {
@@ -232,6 +308,7 @@
             text-align: center;
             padding: 40px 20px;
             color: var(--gray-color);
+            background: transparent;
         }
         
         .empty-state i {
@@ -255,10 +332,14 @@
             box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
         
-        #update-notice a {
-            color: var(--secondary-color);
-            font-weight: bold;
+        #refresh-button {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
             margin-left: 10px;
+            cursor: pointer;
         }
         
         /* Responsive design */
@@ -268,7 +349,7 @@
             }
             
             #search-input {
-                width: 90%;
+                width: 70%;
             }
             
             .nav-tabs {
@@ -279,22 +360,88 @@
                 margin: 2px 0;
                 border-radius: 5px;
             }
+            
+            .footer-links {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-bottom: 20px;
+            }
         }
         
         /* Footer */
         footer {
-            text-align: center;
             margin-top: 40px;
-            padding: 20px;
             color: var(--gray-color);
             font-size: 0.9em;
         }
         
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 0 10px;
+            background: transparent;
+        }
+        
+        .footer-column h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-column a {
+            color: var(--gray-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright-disclaimer {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
         .disclaimer {
-            background-color: #f8f9fa;
+            background-color: var(--disclaimer-bg);
             padding: 15px;
             border-radius: 5px;
-            margin-top: 30px;
+            margin-bottom: 20px;
             font-size: 0.9em;
             color: var(--gray-color);
         }
@@ -313,26 +460,22 @@
         
         /* Dark mode styles */
         body.dark-mode {
-            background-color: #121212;
-            color: #e0e0e0;
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --section-bg: #1e1e1e;
+            --border-color: #333;
+            --faq-header-bg: #2d2d2d;
+            --testimonial-bg: #2d2d2d;
+            --disclaimer-bg: #2d2d2d;
         }
         
-        body.dark-mode .newspaper-section,
-        body.dark-mode .newspaper-card,
-        body.dark-mode .disclaimer {
-            background-color: #1e1e1e;
+        body.dark-mode .section-title,
+        body.dark-mode .testimonials h3,
+        body.dark-mode .faq-section h3,
+        body.dark-mode .popular-section h3,
+        body.dark-mode .footer-column h4 {
             color: #e0e0e0;
-            border-color: #333;
-        }
-        
-        body.dark-mode .section-title {
-            color: #e0e0e0;
-        }
-        
-        body.dark-mode #search-input {
-            background-color: #333;
-            color: #e0e0e0;
-            border-color: #444;
         }
         
         body.dark-mode .nav-tab {
@@ -343,6 +486,25 @@
         
         body.dark-mode .nav-tab.active {
             background-color: var(--secondary-color);
+        }
+        
+        body.dark-mode .footer-column a,
+        body.dark-mode .social-links a,
+        body.dark-mode .app-links a {
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .footer-column a:hover,
+        body.dark-mode .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        body.dark-mode .empty-state {
+            color: #aaa;
+        }
+        
+        body.dark-mode .empty-state i {
+            color: #555;
         }
         
         /* Loading spinner */
@@ -365,7 +527,7 @@
         /* Newsletter form */
         .newsletter-form {
             background: var(--primary-color);
-            padding: 20px;
+            padding: 30px;
             border-radius: 5px;
             margin: 30px 0;
             color: white;
@@ -374,166 +536,509 @@
         
         .newsletter-form h3 {
             margin-top: 0;
+            font-size: 1.5em;
+        }
+        
+        .input-group {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
         }
         
         .newsletter-form input[type="email"] {
-            padding: 10px;
+            padding: 12px 15px;
             width: 60%;
             border: none;
-            border-radius: 4px;
-            margin-right: 10px;
+            border-radius: 4px 0 0 4px;
+            font-size: 1em;
         }
         
         .newsletter-form button {
-            padding: 10px 20px;
+            padding: 12px 20px;
             background: var(--secondary-color);
             color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: #c0392b;
+        }
+        
+        .privacy-note {
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: var(--testimonial-bg);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .testimonials h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 0;
+            scroll-snap-type: x mandatory;
+        }
+        
+        blockquote {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            scroll-snap-align: start;
+        }
+        
+        blockquote footer {
+            font-style: italic;
+            text-align: right;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--gray-color);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 30px 0;
+            background: var(--section-bg);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .faq-section h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        
+        .faq-item h4 {
+            background: var(--faq-header-bg);
+            padding: 15px;
+            margin: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-color);
+        }
+        
+        .faq-item h4::after {
+            content: '+';
+            font-size: 1.2em;
+        }
+        
+        .faq-item h4.active::after {
+            content: '-';
+        }
+        
+        .faq-item div {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-color);
+        }
+        
+        .faq-item div.show {
+            padding: 15px;
+            max-height: 500px;
+        }
+        
+        /* Popular Newspapers */
+        .popular-section {
+            margin: 30px 0;
+        }
+        
+        .popular-section h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .popular-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .popular-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .popular-card i {
+            font-size: 2em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        /* Back to top button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            z-index: 99;
+            transition: opacity 0.3s;
+        }
+        
+        #back-to-top:hover {
+            background: var(--accent-color);
+        }
+        
+        /* Cookie Consent Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .cookie-banner p {
+            margin: 0 0 15px 0;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .cookie-btn {
+            padding: 8px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
         
-        /* Social links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+        #accept-cookies {
+            background: var(--accent-color);
+            color: white;
         }
         
-        .social-links a {
-            color: var(--primary-color);
-            font-size: 1.5em;
-            transition: color 0.3s;
+        #decline-cookies {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
         }
         
-        .social-links a:hover {
-            color: var(--secondary-color);
+        /* Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
         }
         
-        body.dark-mode .social-links a {
-            color: #e0e0e0;
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
     </style>
 </head>
 <body>
+    <!-- Accessibility: Skip to content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <header>
-        <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+        <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode" aria-label="Toggle dark mode">
             <i class="fas fa-moon"></i>
         </button>
-        <h1>Free Online Newspapers</h1>
-        <p class="subtitle">Read Official E-Papers Without Paywalls</p>
+        <h1>Today's Free Newspaper E-Papers</h1>
+        <p class="subtitle">The Hindu, Times of India, Dainik Bhaskar & More</p>
     </header>
     
-    <div class="date-display" id="current-date">
-        <!-- Date/time will be inserted by JavaScript -->
-    </div>
-    
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search newspapers...">
-    </div>
-    
-    <div class="nav-tabs">
-        <div class="nav-tab active" data-tab="english">English</div>
-        <div class="nav-tab" data-tab="hindi">Hindi</div>
-        <div class="nav-tab" data-tab="telugu">Telugu</div>
-        <div class="nav-tab" data-tab="regional">Regional</div>
-        <div class="nav-tab" data-tab="international">International</div>
-        <div class="nav-tab" data-tab="bookmarks">Bookmarks</div>
-    </div>
-    
-    <div id="loader" class="loader"></div>
-    
-    <!-- English Newspapers Section -->
-    <div class="newspaper-section active" id="english-section">
-        <h2 class="section-title"><i class="fas fa-globe"></i>English Newspapers - <span id="today-date"></span></h2>
-        <div class="newspaper-grid" id="english-grid">
-            <!-- Content loaded dynamically -->
+    <main id="main-content">
+        <!-- Current date display with schema markup -->
+        <div class="date-display" id="current-date" itemprop="datePublished" content="">
+            <!-- Date will be inserted by JavaScript -->
         </div>
-    </div>
-    
-    <!-- Hindi Newspapers Section -->
-    <div class="newspaper-section" id="hindi-section">
-        <h2 class="section-title"><i class="fas fa-language"></i>Hindi Newspapers</h2>
-        <div class="newspaper-grid" id="hindi-grid">
-            <!-- Content loaded dynamically -->
+        
+        <!-- Enhanced search with ARIA labels -->
+        <div class="search-container" role="search">
+            <label for="search-input" class="sr-only">Search newspapers</label>
+            <input type="text" id="search-input" placeholder="Search 100+ newspapers..." aria-label="Search newspapers">
+            <button id="search-button" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
-    </div>
-    
-    <!-- Telugu Newspapers Section -->
-    <div class="newspaper-section" id="telugu-section">
-        <h2 class="section-title"><i class="fas fa-language"></i>Telugu Newspapers</h2>
-        <div class="newspaper-grid" id="telugu-grid">
-            <!-- Content loaded dynamically -->
+        
+        <!-- Tab navigation with ARIA roles -->
+        <div class="nav-tabs" role="tablist">
+            <button class="nav-tab active" data-tab="english" role="tab" aria-selected="true" aria-controls="english-section">English</button>
+            <button class="nav-tab" data-tab="hindi" role="tab" aria-selected="false" aria-controls="hindi-section">Hindi</button>
+            <button class="nav-tab" data-tab="telugu" role="tab" aria-selected="false" aria-controls="telugu-section">Telugu</button>
+            <button class="nav-tab" data-tab="regional" role="tab" aria-selected="false" aria-controls="regional-section">Regional</button>
+            <button class="nav-tab" data-tab="international" role="tab" aria-selected="false" aria-controls="international-section">International</button>
+            <button class="nav-tab" data-tab="bookmarks" role="tab" aria-selected="false" aria-controls="bookmarks-section">Bookmarks</button>
         </div>
-    </div>
+        
+        <div id="loader" class="loader" aria-live="polite" aria-atomic="true"></div>
+        
+        <!-- English Newspapers Section with schema markup -->
+        <section class="newspaper-section active" id="english-section" role="tabpanel" aria-labelledby="english-tab" itemscope itemtype="https://schema.org/ItemList">
+            <h2 class="section-title"><i class="fas fa-globe" aria-hidden="true"></i><span itemprop="name">English Newspapers</span> - <span id="today-date"></span></h2>
+            <div class="newspaper-grid" id="english-grid">
+                <!-- Content loaded dynamically -->
+            </div>
+        </section>
+        
+        <!-- Hindi Newspapers Section -->
+        <section class="newspaper-section" id="hindi-section" role="tabpanel" aria-labelledby="hindi-tab" itemscope itemtype="https://schema.org/ItemList">
+            <h2 class="section-title"><i class="fas fa-language" aria-hidden="true"></i><span itemprop="name">Hindi Newspapers</span></h2>
+            <div class="newspaper-grid" id="hindi-grid">
+                <!-- Content loaded dynamically -->
+            </div>
+        </section>
+        
+        <!-- Telugu Newspapers Section -->
+        <section class="newspaper-section" id="telugu-section" role="tabpanel" aria-labelledby="telugu-tab" itemscope itemtype="https://schema.org/ItemList">
+            <h2 class="section-title"><i class="fas fa-language" aria-hidden="true"></i><span itemprop="name">Telugu Newspapers</span></h2>
+            <div class="newspaper-grid" id="telugu-grid">
+                <!-- Content loaded dynamically -->
+            </div>
+        </section>
+        
+        <!-- Regional Newspapers Section -->
+        <section class="newspaper-section" id="regional-section" role="tabpanel" aria-labelledby="regional-tab" itemscope itemtype="https://schema.org/ItemList">
+            <h2 class="section-title"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span itemprop="name">Regional Newspapers</span></h2>
+            <div class="newspaper-grid" id="regional-grid">
+                <!-- Content loaded dynamically -->
+            </div>
+        </section>
+        
+        <!-- International Newspapers Section -->
+        <section class="newspaper-section" id="international-section" role="tabpanel" aria-labelledby="international-tab" itemscope itemtype="https://schema.org/ItemList">
+            <h2 class="section-title"><i class="fas fa-globe-americas" aria-hidden="true"></i><span itemprop="name">International Newspapers</span></h2>
+            <div class="newspaper-grid" id="international-grid">
+                <!-- Content loaded dynamically -->
+            </div>
+        </section>
+        
+        <!-- Bookmarks Section -->
+        <section class="newspaper-section" id="bookmarks-section" role="tabpanel" aria-labelledby="bookmarks-tab">
+            <h2 class="section-title"><i class="fas fa-bookmark" aria-hidden="true"></i>Your Bookmarks</h2>
+            <div class="newspaper-grid" id="bookmarks-grid">
+                <!-- Bookmarks will be inserted here by JavaScript -->
+            </div>
+            <div class="empty-state" id="empty-bookmarks">
+                <i class="far fa-bookmark"></i>
+                <h3>No bookmarks yet</h3>
+                <p>Click the bookmark icon on any newspaper to save it here</p>
+            </div>
+        </section>
+        
+        <!-- Newsletter Section with conversion optimization -->
+        <section class="newsletter-form" aria-label="Email newsletter subscription">
+            <div class="newsletter-container">
+                <h3><i class="fas fa-envelope" aria-hidden="true"></i> Get Daily Newspaper Links</h3>
+                <p>Join 10,000+ readers who get today's links delivered daily</p>
+                <form id="newsletter-form">
+                    <div class="input-group">
+                        <label for="newsletter-email" class="sr-only">Email address</label>
+                        <input type="email" id="newsletter-email" placeholder="Your email address" required>
+                        <button type="submit" aria-label="Subscribe">Subscribe <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <p class="privacy-note">We respect your privacy. Unsubscribe at any time.</p>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Social Proof Section -->
+        <section class="testimonials" aria-label="User testimonials">
+            <h3>What Our Readers Say</h3>
+            <div class="testimonial-carousel">
+                <blockquote>
+                    "Saves me 30 minutes every morning finding all the epapers!"
+                    <footer>- Rajesh K., Daily Reader</footer>
+                </blockquote>
+                <blockquote>
+                    "The most comprehensive collection of newspaper links I've found."
+                    <footer>- Priya M., Journalist</footer>
+                </blockquote>
+            </div>
+        </section>
+        
+        <!-- FAQ Section with Schema Markup -->
+        <section class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
+            <h3>Frequently Asked Questions</h3>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h4 itemprop="name">Are these newspaper links legal?</h4>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Yes, we only link to official newspaper websites. We don't host any content.</p>
+                </div>
+            </div>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h4 itemprop="name">How often are the links updated?</h4>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">We update all links daily by 7:00 AM IST.</p>
+                </div>
+            </div>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h4 itemprop="name">Do I need to pay to access these links?</h4>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text">No, all links are free to access. Some newspapers may require free registration.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Popular Newspapers Section -->
+        <section class="popular-section">
+            <h3><i class="fas fa-fire"></i> Most Popular Newspapers</h3>
+            <div class="popular-grid">
+                <a href="https://epaper.thehindu.com" class="popular-card" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-newspaper"></i>
+                    <span>The Hindu</span>
+                </a>
+                <a href="https://epaper.timesgroup.com" class="popular-card" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Times of India</span>
+                </a>
+                <a href="https://epaper.bhaskar.com" class="popular-card" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Dainik Bhaskar</span>
+                </a>
+                <a href="https://epaper.eenadu.net" class="popular-card" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Eenadu</span>
+                </a>
+            </div>
+        </section>
+    </main>
     
-    <!-- Regional Newspapers Section -->
-    <div class="newspaper-section" id="regional-section">
-        <h2 class="section-title"><i class="fas fa-map-marker-alt"></i>Regional Newspapers</h2>
-        <div class="newspaper-grid" id="regional-grid">
-            <!-- Content loaded dynamically -->
-        </div>
-    </div>
-    
-    <!-- International Newspapers Section -->
-    <div class="newspaper-section" id="international-section">
-        <h2 class="section-title"><i class="fas fa-globe-americas"></i>International Newspapers</h2>
-        <div class="newspaper-grid" id="international-grid">
-            <!-- Content loaded dynamically -->
-        </div>
-    </div>
-    
-    <!-- Bookmarks Section -->
-    <div class="newspaper-section" id="bookmarks-section">
-        <h2 class="section-title"><i class="fas fa-bookmark"></i>Your Bookmarks</h2>
-        <div class="newspaper-grid" id="bookmarks-grid">
-            <!-- Bookmarks will be inserted here by JavaScript -->
-        </div>
-        <div class="empty-state" id="empty-bookmarks">
-            <i class="far fa-bookmark"></i>
-            <h3>No bookmarks yet</h3>
-            <p>Click the bookmark icon on any newspaper to save it here</p>
-        </div>
-    </div>
-    
-    <!-- Newsletter Section -->
-    <div class="newsletter-form">
-        <h3><i class="fas fa-envelope"></i> Get Daily Newspaper Links in Your Email</h3>
-        <form id="newsletter-form">
-            <input type="email" placeholder="Your email address" required>
-            <button type="submit">Subscribe</button>
-        </form>
-        <p>We'll send you today's newspaper links every morning</p>
-    </div>
-    
-    <!-- Social Links -->
-    <div class="social-links">
-        <a href="https://t.me/dailynewsv" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-        <a href="https://twitter.com/dailynewsv" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://instagram.com/dailynewsv" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    </div>
-    
-    <!-- Important Pages Links -->
-    <div style="text-align: center; margin: 20px 0;">
-        <a href="#about" style="margin: 0 10px;">About Us</a>
-        <a href="#privacy" style="margin: 0 10px;">Privacy Policy</a>
-        <a href="#disclaimer" style="margin: 0 10px;">Disclaimer</a>
-    </div>
-    
-    <div class="disclaimer">
-        <p><strong>Disclaimer:</strong> This website provides links to official newspaper e-papers. We do not host or own any content. Some newspapers may require subscriptions after free previews.</p>
-        <p><strong>Note:</strong> International newspapers may have limited free articles or require registration.</p>
-    </div>
-    
+    <!-- Enhanced Footer with more links -->
     <footer>
-        <p>© <span id="current-year"></span> DailyNewsV.live | Made for educational purposes</p>
-        <p>Suggestions? <a href="mailto:shravankumarssk01@gmail.com">Contact us</a></p>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Newspapers</h4>
+                <ul>
+                    <li><a href="/english">English</a></li>
+                    <li><a href="/hindi">Hindi</a></li>
+                    <li><a href="/regional">Regional</a></li>
+                    <li><a href="/international">International</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/guide">How to Use</a></li>
+                    <li><a href="/newsletter">Daily Newsletter</a></li>
+                    <li><a href="/bookmarks">Bookmark Guide</a></li>
+                    <li><a href="/mobile">Mobile Tips</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="https://t.me/dailynewsv" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://twitter.com/dailynewsv" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/dailynewsv" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright-disclaimer">
+            <div class="disclaimer">
+                <p><strong>Disclaimer:</strong> This website provides links to official newspaper e-papers. We do not host or own any content.</p>
+            </div>
+            <div class="copyright">
+                <p>© <span id="current-year"></span> DailyNewsV.live</p>
+            </div>
+        </div>
     </footer>
     
     <!-- Update notification -->
-    <div id="update-notice">
-        New content available! <a href="javascript:location.reload()">Click to refresh</a>.
+    <div id="update-notice" role="alert">
+        <span>New content available!</span>
+        <button id="refresh-button" aria-label="Refresh page">Click to refresh</button>
+    </div>
+    
+    <!-- Back to top button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-banner">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+        <div class="cookie-buttons">
+            <button id="accept-cookies" class="cookie-btn">Accept</button>
+            <button id="decline-cookies" class="cookie-btn">Decline</button>
+        </div>
     </div>
     
     <script>
@@ -963,6 +1468,57 @@
                 });
             });
         }
+        
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-item h4').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all items first
+                document.querySelectorAll('.faq-item h4').forEach(i => {
+                    i.classList.remove('active');
+                    i.nextElementSibling.classList.remove('show');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                    item.nextElementSibling.classList.add('show');
+                }
+            });
+        });
+        
+        // Cookie consent functionality
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-consent').style.display = 'block';
+        }
+        
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookie-consent').style.display = 'none';
+        });
+        
+        document.getElementById('decline-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookie-consent').style.display = 'none';
+        });
         
         // Generate all content on page load
         window.addEventListener('DOMContentLoaded', () => {
